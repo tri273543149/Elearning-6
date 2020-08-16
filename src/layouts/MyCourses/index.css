@@ -1,0 +1,99 @@
+.my_courses .tab_content .nav-link{
+    padding: 8px 45px;
+}
+.my_courses .tab_content a{
+    font-weight: bold;
+    color: grey;
+    background: #f3f3f3;
+}
+.my_courses .tab_content a.active{
+    background: green;
+}
+.my_courses .item_box .item{
+    box-shadow: 0 0 3px 3px #d6b9b9;
+    height: 240px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.my_courses .item_box .item img{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.my_courses .item_box .item .name{
+    padding: 0 10px;
+    color: green;
+    font-size: 15px;
+    font-weight: bold;
+    height: 44px;
+    overflow: hidden;
+}
+.my_courses .item_box .item .desc{
+    padding: 0 10px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 13px;
+}
+.my_courses .item_box .item .author{
+    font-size: 13px;
+    padding: 0 10px;
+    color: blue;
+    font-weight: 500;
+}
+.my_courses .item_box .item .author i{
+    color: orange;
+}
+.my_courses .btn_showmore{
+    padding: 5px 20px;
+    margin-left: 16px;
+    border: none;
+    color: white;
+    background: green;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.my_courses .my_quizes table td{
+    vertical-align: middle;
+}
+.my_courses .my_quizes table .name{
+    width: 170px;
+    height: 45px;
+    overflow: hidden;
+    color: green;
+    font-weight: 500;
+}
+.my_courses .my_quizes table .quize{
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.my_courses .my_quizes table .status i{
+    margin-right: 7px;
+}
+.my_courses .my_quizes table .process{
+    font-weight: 500;
+}
+.my_courses  .order{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    padding: 20px;
+    margin: 10px 0;
+    border: solid 1px grey;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.my_courses .order .code{
+    font-size: 17px;
+    font-weight: 300;
+}
+.my_courses .order .time{
+    font-size: 15px;
+    font-weight: 500;
+}

@@ -1,0 +1,19 @@
+.trusted{
+    padding: 30px;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+}
+.trusted .title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+.trusted .content_box{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trusted .content_box img{
+    margin: 0 8px;
+}

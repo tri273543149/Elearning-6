@@ -1,0 +1,71 @@
+.paginated_courses{
+    padding: 30px 0;
+}
+.paginated_courses .title{
+    font-size: 30px;
+    text-align: center;
+}
+.paginated_courses .body{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.paginated_courses .courseitem{
+    position: relative;
+    height: 298px;
+    border: solid 1px grey;
+    margin-bottom: 30px;
+}
+.paginated_courses .courseitem img{
+    width: 100%;
+    height: 143px;
+}
+.paginated_courses .courseitem .cart{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;;
+}
+.paginated_courses .courseitem .cart i{
+    font-size: 22px;
+    color: green;
+}
+.paginated_courses .courseitem a:hover{
+    text-decoration: none;
+}
+.paginated_courses .courseitem .item{
+    padding: 10px;
+    background: #fdfdfd;
+}
+.paginated_courses .courseitem .item .text_box{
+    padding:  10px;
+}
+.paginated_courses .courseitem .item .text_box .course_name{
+    height: 42px;
+    overflow: hidden;
+    color: green;
+    font-weight: bold;
+    font-size: 15px;
+}
+.paginated_courses .courseitem .item .text_box .course_desc{
+    margin-top: 5px;
+    margin-bottom: 6px;
+    height: 40px;
+    font-size: 14px;
+    color: grey;
+    overflow: hidden;
+}
+.paginated_courses .courseitem .item .text_box .course_star{
+    font-size: 13px;
+}
+.paginated_courses .courseitem .item .text_box .course_star span{
+    font-weight: bold;
+    color: black;
+    margin-right: 5px;
+}
+.paginated_courses .courseitem .item .text_box .course_star i{
+    color: orange;
+}
+.paginated_courses nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

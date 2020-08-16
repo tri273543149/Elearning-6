@@ -1,0 +1,93 @@
+.shopping_cart {
+  padding-top: 50px;
+}
+.shopping_cart .top_content {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: orange;
+  margin-bottom: 60px;
+}
+.shopping_cart .top_content .title {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.shopping_cart .mid_content {
+  width: 70%;
+  margin: 0 auto;
+}
+.shopping_cart .mid_content .table_item {
+  height: 320px;
+  overflow: auto;
+  box-shadow: 0 0 2px 2px #f3f3f3;
+}
+.shopping_cart .mid_content table th,
+.shopping_cart .mid_content table td {
+  vertical-align: middle;
+}
+.shopping_cart .mid_content table td a:hover {
+  text-decoration: none;
+}
+.shopping_cart .mid_content .course_item {
+  display: flex;
+  align-items: center;
+}
+.shopping_cart .mid_content .course_item img {
+  width: 100px;
+  height: 60px;
+}
+.shopping_cart .mid_content .course_item .text {
+  width: 260px;
+  padding: 0 10px;
+}
+.shopping_cart .mid_content .course_item .name,
+.shopping_cart .mid_content .course_item .desc {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.shopping_cart .mid_content .course_item .name {
+  font-weight: 500;
+}
+.shopping_cart .mid_content .course_item .desc {
+  font-size: 13px;
+  color: black;
+}
+.shopping_cart .mid_content .price {
+  font-weight: bold;
+  color: red;
+}
+/* --------- */
+.shopping_cart .mid_content .cart_status {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  padding: 30px;
+  background: #f3f3f3;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.shopping_cart .mid_content .cart_status .title {
+  grid-column: 1/3;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.shopping_cart .mid_content .cart_status .item {
+  font-size: 18px;
+  font-weight: bold;
+}
+.shopping_cart .mid_content .cart_status button,
+.shopping_cart .mid_content .cart_status a {
+  grid-column: 1 / 3;
+}
+/* ---- */
+.shopping_cart .bot_content{
+  padding: 35px 0;
+}

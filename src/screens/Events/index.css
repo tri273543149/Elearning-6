@@ -1,0 +1,93 @@
+.events{
+    padding-top: 44px;
+}
+.events .top_content{
+    width: 100%;
+    height: 430px;
+    background: url(./background.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.events .top_content .content_box{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+.events .top_content .content_box .subtitle{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: green;
+}
+.events .top_content .content_box .title{
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.events .top_content .content_box .body{
+    color: orangered;
+    font-size: 18px;
+}
+/* ------------- */
+.events .mid_content .content_box{
+    display: flex;
+}
+.events .mid_content .content_box .item{
+    padding: 30px 50px;
+    text-align: center;
+    color: white;
+}
+.events .mid_content .content_box .item_2{
+    background: #f4c150;
+}
+.events .mid_content .content_box .item_1{
+    background: #853c6c;
+}
+.events .mid_content .content_box .item_3{
+    background: #007791;
+}
+.events .mid_content .content_box .item i{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.events .mid_content .content_box .item .title{
+    font-size: 24px;
+    font-weight: bold;
+}
+.events .mid_content .content_box .item .body{
+    line-height: 30px;
+    font-weight: 500;
+}
+/* ---------- */
+.events .bot_content{
+    padding: 50px 0;
+}
+.events .bot_content .content_box{
+    width: 65%;
+    margin: 0 auto;
+}
+.events .bot_content .content_box img{
+    width: 100%;
+}
+.events .bot_content .content_box .title{
+    font-weight: 500;
+    font-size: 26px;
+    color: purple;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.events .bot_content .content_box .subtitle{
+    font-size: 15px;
+    font-weight: bold;
+}
+.events .bot_content .content_box .body{
+    line-height: 30px;
+}

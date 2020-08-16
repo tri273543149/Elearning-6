@@ -1,0 +1,109 @@
+.blogs {
+  padding-top: 44px;
+}
+.blogs .title {
+  font-size: 30px;
+  font-weight: 500;
+  margin-left: 40px;
+}
+.blogs .mid_content {
+  margin-top: 30px;
+}
+.blogs .mid_content .item_box {
+  padding: 20px;
+  cursor: pointer;
+}
+.blogs .mid_content .item_box img {
+  width: 100%;
+  height: 220px;
+  border: solid 2px grey;
+  margin-bottom: 10px;
+}
+.blogs .mid_content .item_box .name {
+  font-size: 18px;
+  font-weight: 500;
+  height: 55px;
+  overflow: hidden;
+}
+.blogs .mid_content .item_box .name:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.blogs .mid_content .item_box .author {
+  color: orange;
+}
+.blogs .mid_content .item_box .date {
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+}
+.blogs .categories {
+  margin: 10px;
+  border: solid 1px grey;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.blogs .subtitle {
+  text-align: center;
+  width: 100%;
+  background: grey;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+.blogs .categories .item {
+  display: flex;
+  justify-content: center;
+}
+.blogs .categories .item li {
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 17px;
+}
+.blogs .categories .item li:hover {
+  color: green;
+  text-decoration: underline;
+}
+
+.blogs .recent_post {
+  cursor: pointer;
+  margin: 10px;
+  border: solid 1px grey;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.blogs .recent_post .item{
+  border-top: solid 5px;
+}
+.blogs .recent_post img {
+  width: 100%;
+}
+.blogs .recent_post .name {
+  height: 54px;
+  font-weight: 500;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.blogs .recent_post .author {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: orange;
+}
+.blogs .recent_post .date{
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: green;
+}

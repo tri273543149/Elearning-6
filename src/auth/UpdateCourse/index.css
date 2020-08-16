@@ -1,0 +1,68 @@
+.update_course{
+    width: 100%;
+    height: 100%;
+    background: url(./background.jpg) no-repeat;
+    background-size: cover;
+}
+.update_course .content_box{
+    padding: 10px;
+}
+.update_course .content_box .title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: green;
+}
+.update_course .form_container{
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.update_course .form_container .form-group{
+    margin-bottom: 0 !important;
+}
+.update_course .form_container .label_name{
+    color: green;
+    font-weight: 300;
+    font-size: 18px;
+}
+.update_course .form_container .btn_style{
+    text-align: right;
+    padding-top: 10px;
+}
+.update_course .left_box{
+    padding-right: 10px;
+}
+.update_course .left_box img{
+    width: 100%;
+    min-height: 140px;
+    max-height: 140px;
+}
+.update_course .left_box .item{
+   margin-bottom: 5px;
+   font-weight: 500; 
+}
+.update_course .left_box .item i{
+    color: green;
+}
+.update_course .left_box .course_star{
+    font-size: 12px;
+}
+/* ----------- */
+
+.update_course .bottom_box .sub_title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+.update_course .bottom_box .table_box{
+    overflow-y: scroll;
+    background: white;
+    padding: 20px;
+    height: 190px;
+}
+
