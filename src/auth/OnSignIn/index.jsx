@@ -7,7 +7,7 @@ const OnSignIn = ({ credentials }) => {
   return (
     <>
       <NavLink
-        to="/admin-courses"
+        to="/admin"
         className={
           credentials.maLoaiNguoiDung === "GV" ? "admin_signin" : "d-none"
         }

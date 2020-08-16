@@ -5,23 +5,16 @@ import { createCourseSchema } from "../../services/course";
 import { createAction } from "../../store/actions";
 import { IS_MODAL_CLOSE } from "../../store/constants/modal";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewCourse, uploadCourseImage } from "../../store/actions/course";
+import { addNewCourse } from "../../store/actions/course";
 import { maNhom } from "../../config";
-
-let randomId = require("random-id");
+import randomId from "random-id";
 
 const AddNewCourse = () => {
   const dispatch = useDispatch();
   const taiKhoan = useSelector((state) => state.user.credentials.taiKhoan);
 
   const handleOnSubmit = (values) => {
-    // dispatch(addNewCourse(values));
-    const formData = new FormData();
-    for(let i in values){
-      formData.append(i, values[i])
-    }
-    // formData.append("hinhAnh", values.hinhAnh);
-    dispatch(uploadCourseImage(formData));
+    dispatch(addNewCourse(values));
   };
   return (
     <section className="add_new_course">
@@ -36,7 +29,7 @@ const AddNewCourse = () => {
             luotXem: Math.floor(Math.random() * 10000),
             danhGia: Math.floor(Math.random() * 10000),
             maNhom: maNhom,
-            ngayTao: "30/08/2020",
+            ngayTao: "",
             hinhAnh: "",
             maDanhMucKhoaHoc: "BackEnd",
             taiKhoanNguoiTao: taiKhoan,
@@ -50,16 +43,15 @@ const AddNewCourse = () => {
               <div className="form_container">
                 <div className="form-group">
                   <div className="form_content">
-                    <span className="label_name">Course ID</span>
-                    <ErrorMessage name="maKhoaHoc">
+                    <span className="label_name">Course name</span>
+                    <ErrorMessage name="tenKhoaHoc">
                       {(msg) => <span className="text-danger">{msg}</span>}
                     </ErrorMessage>
                   </div>
                   <Field
                     className="form-control"
-                    disabled
                     type="text"
-                    name="maKhoaHoc"
+                    name="tenKhoaHoc"
                     onChange={handleChange}
                   />
                 </div>
@@ -80,21 +72,6 @@ const AddNewCourse = () => {
 
                 <div className="form-group">
                   <div className="form_content">
-                    <span className="label_name">Course name</span>
-                    <ErrorMessage name="tenKhoaHoc">
-                      {(msg) => <span className="text-danger">{msg}</span>}
-                    </ErrorMessage>
-                  </div>
-                  <Field
-                    className="form-control"
-                    type="text"
-                    name="tenKhoaHoc"
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <div className="form_content">
                     <span className="label_name">Description</span>
                     <ErrorMessage name="moTa">
                       {(msg) => <span className="text-danger">{msg}</span>}
@@ -104,6 +81,20 @@ const AddNewCourse = () => {
                     className="form-control"
                     type="text"
                     name="moTa"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <div className="form_content">
+                    <span className="label_name">Creating Date</span>
+                    <ErrorMessage name="ngayTao">
+                      {(msg) => <span className="text-danger">{msg}</span>}
+                    </ErrorMessage>
+                  </div>
+                  <Field
+                    className="form-control"
+                    type="text"
+                    name="ngayTao"
                     onChange={handleChange}
                   />
                 </div>
