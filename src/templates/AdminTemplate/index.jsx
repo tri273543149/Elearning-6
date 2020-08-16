@@ -9,14 +9,12 @@ import { useDispatch } from "react-redux";
 import { Layout, Menu, Typography } from "antd";
 import {
   MessageOutlined,
-  LoginOutlined,
   BarChartOutlined,
   LaptopOutlined,
   UserOutlined,
   BellOutlined,
   SettingOutlined,
   StarOutlined,
-  HomeOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -55,19 +53,22 @@ const AdminLayout = (props) => {
               style={{ fontSize: "16px", fontWeight: "500" }}
             >
               <Menu.Item key="1">
-                <NavLink to="/admin">
+                <NavLink exact to="/admin">
                   <BarChartOutlined />
                   FIGURES
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="2">
-                <NavLink to="/admin-courses">
+                <NavLink exact to="/admin-courses">
                   <LaptopOutlined />
                   COURSES
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="3" icon={<UserOutlined />}>
-                USERS
+              <Menu.Item key="3">
+                <NavLink exact to="/admin-users">
+                  <UserOutlined />
+                  USERS
+                </NavLink>
               </Menu.Item>
               <Menu.Item key="4" icon={<MessageOutlined />}>
                 MESSAGES

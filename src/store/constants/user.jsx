@@ -1,1 +1,6 @@
 export const FETCH_CREDENTIALS = "FETCH_CREDENTIALS";
+export const FETCH_USER_LIST = "FETCH_USER_LIST";
+export const ADD_NEW_USER = "ADD_NEW_USER";
+export const UPDATE_USER = "UPDATE_USER";
+export const DELETE_USER = "DELETE_USER";
+export const USER_DETAIL = "USER_DETAIL";

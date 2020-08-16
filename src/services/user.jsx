@@ -61,11 +61,11 @@ class UserService {
 
   // (Private) (data: là thông tin người dùng) (maLoaiNguoiDung: GV) trả về thông tin người dùng mới cập nhật
   capNhatThongTinNguoiDung = (data) =>
-    api.post("QuanLyNguoiDung/CapNhatThongTinNguoiDung", data);
+    api.put("QuanLyNguoiDung/CapNhatThongTinNguoiDung", data);
 
   // (Private) (maLoaiNguoiDung: GV) trả về thông báo xóa thành công
   xoaNguoiDung = (taiKhoan) =>
-    api.post(`QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
+    api.delete(`QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
 
   // (Private) (maLoaiNguoiDung: GV) trả về danh sách khóa học chưa ghi danh hoặc chưa đăng ký
   layDanhSachKhoaHocChuaGhiDanh = (taiKhoan) =>

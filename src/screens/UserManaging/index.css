@@ -1,0 +1,47 @@
+.user_managing {
+  width: 100%;
+  min-height: 650px;
+}
+.user_managing .control_bar {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px grey;
+}
+.user_managing .control_bar input {
+  width: 250px;
+  margin-right: 10px;
+  border: solid 1px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.user_managing .control_bar select {
+  width: 130px;
+  border: solid 1px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.user_managing .control_bar input:focus,
+.user_managing .control_bar select:focus {
+  outline: none;
+}
+/* -------- */
+.user_managing .content_box{
+    padding: 0 10px;
+}
+.user_managing .content_box table{
+    text-align: center;
+}
+.user_managing .content_box table td,
+.user_managing .content_box table th{
+    vertical-align: middle;
+}

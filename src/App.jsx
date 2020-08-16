@@ -8,10 +8,10 @@ import { SET_CART } from "./store/constants/cart";
 import Modal from "react-modal";
 import { IS_MODAL_CLOSE } from "./store/constants/modal";
 import { FETCH_CREDENTIALS } from "./store/constants/user";
-import AOS from "aos";
+import { getUserList } from "./store/actions/user";
 import setHeaders from "./helpers/setHeaders";
+import AOS from "aos";
 import "aos/dist/aos.css";
-import ScrollToTop from "./components/ScrollToTop";
 // import components
 import { HomeTemplate } from "./templates/HomeTemplate";
 import { AdminTemplate } from "./templates/AdminTemplate";
@@ -21,6 +21,7 @@ import CourseDetail from "./screens/CourseDetail";
 import Courses from "./screens/Courses";
 import UserProfile from "./screens/UserProfile";
 import CourseManaging from "./screens/CourseManaging";
+import UserManaging from "./screens/UserManaging";
 import Charts from "./screens/Charts";
 import Blogs from "./screens/Blogs";
 import Events from "./screens/Events";
@@ -30,6 +31,8 @@ import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
 import AddNewCourse from "./auth/AddNewCourse";
 import UpdateCourse from "./auth/UpdateCourse";
+import AddNewUser from "./auth/AddNewUser";
+import UpdateUser from "./auth/UpdateUser";
 
 class App extends Component {
   renderModal = () => {
@@ -43,6 +46,10 @@ class App extends Component {
         return <AddNewCourse />;
       case "UpdateCourse":
         return <UpdateCourse />;
+      case "AddNewUser":
+        return <AddNewUser />;
+      case "UpdateUser":
+        return <UpdateUser />;
       default:
         return;
     }
@@ -58,6 +65,7 @@ class App extends Component {
   };
   componentDidMount() {
     this.props.dispatch(fetchCoursesList());
+    this.props.dispatch(getUserList());
     Modal.setAppElement("body");
     AOS.init({ duration: 3000 });
     // ----------------
@@ -121,6 +129,7 @@ class App extends Component {
               exact
               component={CourseManaging}
             />
+            <AdminTemplate path="/admin-users" exact component={UserManaging} />
           </Switch>
         </Fragment>
         <Modal
