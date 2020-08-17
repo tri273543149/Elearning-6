@@ -46,12 +46,14 @@ const CourseItem = ({ course }) => {
         <div className="hover_icon">
           <i className="fa fa-image"></i>
         </div>
-        <input type="file" className="fileInput" />
+        {/* <input type="file" className="fileInput" /> */}
         <img src={hinhAnh} alt="/" />
       </div>
       <div className="course_info">
         <div className="course_name">
-          <NavLink to={`/course-detail/${maKhoaHoc}`}>{tenKhoaHoc}</NavLink>
+          <NavLink to={`/admin-course-detail/${maKhoaHoc}`}>
+            {tenKhoaHoc}
+          </NavLink>
         </div>
         <div className="course_desc">{moTa}</div>
         <span className="badge badge-warning px-3">

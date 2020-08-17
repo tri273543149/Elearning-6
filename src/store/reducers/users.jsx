@@ -21,7 +21,7 @@ const usersReducer = (state = initialState, actions) => {
     case UPDATE_USER: {
       let updateArray = [...state.userArray];
       let index = updateArray.findIndex(
-        (user) => (user.taiKhoan = actions.payload.taiKhoan)
+        (user) => (user.taiKhoan === actions.payload.taiKhoan)
       );
       if (index !== -1) {
         updateArray[index] = actions.payload;
@@ -33,7 +33,7 @@ const usersReducer = (state = initialState, actions) => {
     case DELETE_USER: {
       let updateArray = [...state.userArray];
       let index = updateArray.findIndex(
-        (user) => (user.taiKhoan = actions.payload)
+        (user) => (user.taiKhoan === actions.payload)
       );
       if (index !== -1) {
         updateArray.splice(index, 1);

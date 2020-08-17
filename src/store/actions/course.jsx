@@ -4,6 +4,7 @@ import {
   ADD_NEW_COURSE,
   FETCH_COURSE_DETAIL,
 } from "../constants/course";
+import { REGISTER_USER, UNREGISTER_USER } from "../constants/course";
 import { courseService } from "../../services";
 import { createAction } from ".";
 import { IS_MODAL_CLOSE } from "../constants/modal";
@@ -95,3 +96,63 @@ export const deleteCourse = (maKhoaHoc) => {
       .catch((err) => console.log(err.response.data));
   };
 };
+
+export const getUserOfCourse = (maKhoaHoc) => {
+  return (dispatch) => {
+    courseService
+      .layThongTinHocVienKhoaHoc(maKhoaHoc)
+      .then((res) => {
+        dispatch(createAction(FETCH_COURSE_DETAIL, res.data));
+      })
+      .catch((err) => console.log(err.response.data));
+  };
+};
+
+export const registerUserToCourse = (maKhoaHoc, user) => {
+  let { taiKhoan } = user;
+  let data = { taiKhoan, maKhoaHoc };
+  return (dispatch) => {
+    courseService
+      .ghiDanhKhoaHoc(data)
+      .then((res) => {
+        dispatch(createAction(REGISTER_USER, user));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.response.data,
+        });
+      });
+  };
+};
+
+export const unregisterUserFromCourse = (maKhoaHoc, taiKhoan) => {
+  let data = { maKhoaHoc, taiKhoan};
+  return dispatch => {
+    courseService
+    .huyGhiDanh(data)
+    .then((res) => {
+      dispatch(createAction(UNREGISTER_USER, taiKhoan));
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: res.data,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
+    .catch((err) => {
+      Swal.fire({
+        icon: "error",
+        title: err.response.data,
+      });
+    });
+  }
+}

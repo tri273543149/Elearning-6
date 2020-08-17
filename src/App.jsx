@@ -26,6 +26,7 @@ import Charts from "./screens/Charts";
 import Blogs from "./screens/Blogs";
 import Events from "./screens/Events";
 import Payment from "./screens/Payments";
+import CourseDetailManaging from "./screens/CourseDetailManaging";
 // modal components
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
@@ -128,6 +129,11 @@ class App extends Component {
               path="/admin-courses"
               exact
               component={CourseManaging}
+            />
+            <AdminTemplate
+              path="/admin-course-detail/:maKhoaHoc"
+              exact
+              component={CourseDetailManaging}
             />
             <AdminTemplate path="/admin-users" exact component={UserManaging} />
           </Switch>

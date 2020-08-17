@@ -15,7 +15,7 @@ footer .footer_content {
 footer .footer_content ul {
   list-style: none;
 }
-footer .footer_content ul a {
+footer .footer_content ul span {
   font-size: 15px;
   color: #35a7bb;
   font-weight: 500;

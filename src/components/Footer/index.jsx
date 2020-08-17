@@ -9,47 +9,47 @@ const Footer = () => {
         <div className="footer_content">
           <ul>
             <li>
-              <a>Udemy for Business</a>
+              <span>Udemy for Business</span>
             </li>
             <li>
-              <a>Teach on Udemy</a>
+              <span>Teach on Udemy</span>
             </li>
             <li>
-              <a>Get the app</a>
+              <span>Get the app</span>
             </li>
             <li>
-              <a>About us</a>
+              <span>About us</span>
             </li>
             <li>
-              <a>Contact us</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a>Careers</a>
-            </li>
-            <li>
-              <a>Blogs</a>
-            </li>
-            <li>
-              <a>Help and Support</a>
-            </li>
-            <li>
-              <a>Affiliate</a>
+              <span>Contact us</span>
             </li>
           </ul>
           <ul>
             <li>
-              <a>Terms</a>
+              <span>Careers</span>
             </li>
             <li>
-              <a>Privacy policy and cookie policy</a>
+              <span>Blogs</span>
             </li>
             <li>
-              <a>Sitemap</a>
+              <span>Help and Support</span>
             </li>
             <li>
-              <a>Futured Courses</a>
+              <span>Affiliate</span>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <span>Terms</span>
+            </li>
+            <li>
+              <span>Privacy policy and cookie policy</span>
+            </li>
+            <li>
+              <span>Sitemap</span>
+            </li>
+            <li>
+              <span>Futured Courses</span>
             </li>
           </ul>
           <select>

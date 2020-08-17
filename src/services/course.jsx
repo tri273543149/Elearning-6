@@ -65,6 +65,8 @@ class CourseService {
 
   // (Private, maLoaiNguoiDung: GV) (data: gồm maKhoaHoc và taiKhoan của HV) trả về thông báo hủy ghi danh thành công
   huyGhiDanh = (data) => api.post("QuanLyKhoaHoc/HuyGhiDanh", data);
+  layDanhSachHocVienKhoaHoc = (maKhoaHoc) =>
+    api.post("QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc", { maKhoaHoc });
 }
 
 export default CourseService;
