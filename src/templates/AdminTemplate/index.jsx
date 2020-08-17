@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { logout } from "../../store/actions/user";
 import { useDispatch } from "react-redux";
+import ScrollToTop from "../../components/ScrollToTop";
 
 import { Layout, Menu, Typography } from "antd";
 import {
@@ -99,7 +100,9 @@ export const AdminTemplate = (props) => {
       render={(propsComponent) => {
         return (
           <AdminLayout>
-            <props.component {...propsComponent} />
+            <ScrollToTop>
+              <props.component {...propsComponent} />
+            </ScrollToTop>
           </AdminLayout>
         );
       }}
