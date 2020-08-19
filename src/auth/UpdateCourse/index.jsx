@@ -17,9 +17,7 @@ const UpdateCourse = () => {
     biDanh,
     moTa,
     luotXem,
-    danhGia,
     maNhom,
-    hinhAnh,
     ngayTao,
     danhMucKhoaHoc,
   } = courseDetail;
@@ -39,9 +37,9 @@ const UpdateCourse = () => {
               biDanh,
               moTa,
               luotXem,
+              danhGia: 123,
               maNhom,
-              danhGia,
-              hinhAnh,
+              hinhAnh: "",
               ngayTao,
               taiKhoanNguoiTao: taiKhoan,
               maDanhMucKhoaHoc,
@@ -109,7 +107,7 @@ const UpdateCourse = () => {
                     type="file"
                     name="hinhAnh"
                     onChange={(e) => {
-                      setFieldValue("hinhAnh", e.target.files[0].name);
+                      setFieldValue("hinhAnh", e.target.files[0]);
                     }}
                   />
                 </div>

@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 
 const UserItem = ({ user, index }) => {
   const dispatch = useDispatch();
-  let { taiKhoan, hoTen, email, soDt, maLoaiNguoiDung } = user;
+  let { taiKhoan, hoTen, email, soDt, maLoaiNguoiDung, soDT } = user;
+  console.log(user);
   const getUserInfo = () => {
     dispatch(createAction(IS_MODAL_OPEN, "UpdateUser"));
     dispatch(findUser(taiKhoan));
@@ -33,7 +34,7 @@ const UserItem = ({ user, index }) => {
       <td>{index}</td>
       <td>{taiKhoan}</td>
       <td>{email}</td>
-      <td>{soDt}</td>
+      <td>{soDt ? soDt : soDT}</td>
       <td>{hoTen}</td>
       <td>{maLoaiNguoiDung}</td>
       <td>

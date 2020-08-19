@@ -8,6 +8,8 @@ import {
   USER_DETAIL,
   UPDATE_USER,
   DELETE_USER,
+  SET_REGISTER_USER_LIST,
+  SET_UNREGISTER_USER_LIST,
 } from "../constants/user";
 import { IS_MODAL_CLOSE } from "../constants/modal";
 import { FETCH_USER_LIST } from "../constants/user";
@@ -139,3 +141,25 @@ export const deleteUser = (taiKhoan) => {
       });
   };
 };
+
+export const getUnregiteredUserList = (maKhoaHoc) => {
+  return (dispatch) => {
+    userService
+      .layDanhSachNguoiDungChuaGhiDanh(maKhoaHoc)
+      .then((res) => {
+        dispatch(createAction(SET_UNREGISTER_USER_LIST, res.data));
+      })
+      .catch((err) => console.log(err.response.data));
+  };
+};
+
+export const getRegisteredUserList = maKhoaHoc => {
+  return dispatch => {
+    userService
+    .layDanhSachHocVienKhoaHoc(maKhoaHoc)
+    .then(res => {
+      dispatch(createAction(SET_REGISTER_USER_LIST, res.data));
+    })
+    .catch((err) => console.log(err.response.data));
+  }
+}

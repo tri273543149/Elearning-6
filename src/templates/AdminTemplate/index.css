@@ -26,3 +26,6 @@
 .admin_home_slider a:hover{
   text-decoration: none;
 }
+.admin_home_slider a.active{
+  color: orange !important;
+}

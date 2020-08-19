@@ -47,26 +47,24 @@ const AdminLayout = (props) => {
         <Layout>
           <Sider className="admin_home_slider">
             <Menu
-              defaultSelectedKeys={["1"]}
-              defaultOpenKeys={["sub1"]}
               mode="inline"
               theme="dark"
               style={{ fontSize: "16px", fontWeight: "500" }}
             >
               <Menu.Item key="1">
-                <NavLink exact to="/admin">
+                <NavLink to="/admin" activeClassName="active">
                   <BarChartOutlined />
                   FIGURES
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="2">
-                <NavLink exact to="/admin-courses">
+                <NavLink to="/admin-courses" activeClassName="active">
                   <LaptopOutlined />
                   COURSES
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="3">
-                <NavLink exact to="/admin-users">
+                <NavLink to="/admin-users" activeClassName="active">
                   <UserOutlined />
                   USERS
                 </NavLink>

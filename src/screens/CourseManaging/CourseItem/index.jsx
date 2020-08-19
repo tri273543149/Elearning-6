@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { IS_MODAL_OPEN } from "../../../store/constants/modal";
 import { createAction } from "../../../store/actions";
 import { getCourseInfo } from "../../../store/actions/course";
+import { maNhom } from "../../../config";
 
 const CourseItem = ({ course }) => {
   const dispatch = useDispatch();
@@ -43,15 +44,13 @@ const CourseItem = ({ course }) => {
   return (
     <div className="item_box">
       <div className="text-center img_box">
-        <div className="hover_icon">
-          <i className="fa fa-image"></i>
-        </div>
-        {/* <input type="file" className="fileInput" /> */}
         <img src={hinhAnh} alt="/" />
       </div>
       <div className="course_info">
         <div className="course_name">
-          <NavLink to={`/admin-course-detail/${maKhoaHoc}`}>
+          <NavLink
+            to={`/admin-course-detail/${maKhoaHoc}`}
+          >
             {tenKhoaHoc}
           </NavLink>
         </div>
@@ -64,7 +63,7 @@ const CourseItem = ({ course }) => {
         <div className="course_author">
           {nguoiTao ? nguoiTao.hoTen : taiKhoanNguoiTao}
         </div>
-        <span className="badge badge-success px-2">Admin</span>
+        <span className="badge badge-success px-2">Admin {maNhom}</span>
       </div>
       <div className="text-center align-self-center course_date">{ngayTao}</div>
       <div className="btn_box align-self-center">

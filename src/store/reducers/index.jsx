@@ -6,6 +6,7 @@ import filterReducer from "./filter";
 import courseReducer from "./course";
 import courseDetailReducer from "./courseDetail";
 import usersReducer from "./users";
+import registerReducer from "./register";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   course: courseReducer,
   courseDetail: courseDetailReducer,
   users: usersReducer,
+  register: registerReducer,
 });
 
 export default rootReducer;

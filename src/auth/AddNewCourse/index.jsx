@@ -131,7 +131,7 @@ const AddNewCourse = () => {
                     type="file"
                     name="hinhAnh"
                     onChange={(e) => {
-                      setFieldValue("hinhAnh", e.target.files[0].name);
+                      setFieldValue("hinhAnh", e.target.files[0]);
                     }}
                   />
                 </div>

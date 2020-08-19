@@ -22,7 +22,7 @@ const CourseDetail = ({ history, match }) => {
     dispatch(createAction(ADD_TO_CART, course));
     history.push("/shopping-cart");
   };
-  let { tenKhoaHoc, hinhAnh, moTa, ngayTao, nguoiTao } = courseDetail;
+  let { tenKhoaHoc, hinhAnh, moTa, ngayTao, nguoiTao, luotXem } = courseDetail;
   return (
     <section className="course_detail">
       <div className="item_fixed">
@@ -71,7 +71,7 @@ const CourseDetail = ({ history, match }) => {
                 <i className="fa fa-star"></i>
                 <i className="fa fa-star"></i>
                 <i className="fa fa-star-half-alt"></i>
-                <span className="rating_figure">(10.435 ratings)</span>
+                <span className="rating_figure">({luotXem ? luotXem : "0"} views)</span>
                 <span className="rating_students">(60.654 students)</span>
               </p>
               <p className="course_author">

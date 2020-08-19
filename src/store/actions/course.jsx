@@ -1,14 +1,13 @@
 import {
   FETCH_COURSES,
   DELETE_COURSE,
-  ADD_NEW_COURSE,
   FETCH_COURSE_DETAIL,
 } from "../constants/course";
-import { REGISTER_USER, UNREGISTER_USER } from "../constants/course";
 import { courseService } from "../../services";
 import { createAction } from ".";
 import { IS_MODAL_CLOSE } from "../constants/modal";
 import Swal from "sweetalert2";
+import { REGISTER_USER, UN_REGISTER_USER } from "../constants/user";
 
 export const fetchCoursesList = () => {
   return (dispatch) => {
@@ -33,10 +32,17 @@ export const getCourseInfo = (maKhoaHoc) => {
 };
 
 export const addNewCourse = (data) => {
+  let { hinhAnh, tenKhoaHoc } = data;
+  let file = hinhAnh;
+  let formData = new FormData();
+  formData.append("file", file);
+  formData.append("tenKhoaHoc", tenKhoaHoc);
+  data = { ...data, hinhAnh: hinhAnh.name };
   return (dispatch) => {
     courseService
       .themKhoaHoc(data)
       .then((res) => {
+        dispatch(uploadCourseImage(formData));
         Swal.fire({
           position: "center",
           icon: "success",
@@ -44,7 +50,6 @@ export const addNewCourse = (data) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        dispatch(createAction(ADD_NEW_COURSE, res.data));
         dispatch(createAction(IS_MODAL_CLOSE));
       })
       .catch((err) => {
@@ -61,13 +66,19 @@ export const uploadCourseImage = (data) => {
     courseService
       .themHinhAnhKhoaHoc(data)
       .then((res) => {
-        console.log(res.data);
+        dispatch(fetchCoursesList());
       })
       .catch((err) => console.log(err));
   };
 };
 
 export const updateCourse = (data) => {
+  let { hinhAnh, tenKhoaHoc } = data;
+  let file = hinhAnh;
+  let formData = new FormData();
+  formData.append("file", file);
+  formData.append("tenKhoaHoc", tenKhoaHoc);
+  data = { ...data, hinhAnh: hinhAnh.name };
   return (dispatch) => {
     courseService
       .capNhatKhoaHoc(data)
@@ -79,8 +90,8 @@ export const updateCourse = (data) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        console.log(res.data);
-        // dispatch(createAction(UPDATE_COURSE, res.data));
+        dispatch(uploadCourseImage(formData));
+        dispatch(createAction(IS_MODAL_CLOSE));
       })
       .catch((err) => console.log(err.response.data));
   };
@@ -92,17 +103,6 @@ export const deleteCourse = (maKhoaHoc) => {
       .xoaKhoaHoc(maKhoaHoc)
       .then((res) => {
         dispatch(createAction(DELETE_COURSE, maKhoaHoc));
-      })
-      .catch((err) => console.log(err.response.data));
-  };
-};
-
-export const getUserOfCourse = (maKhoaHoc) => {
-  return (dispatch) => {
-    courseService
-      .layThongTinHocVienKhoaHoc(maKhoaHoc)
-      .then((res) => {
-        dispatch(createAction(FETCH_COURSE_DETAIL, res.data));
       })
       .catch((err) => console.log(err.response.data));
   };
@@ -124,35 +124,26 @@ export const registerUserToCourse = (maKhoaHoc, user) => {
           timer: 1500,
         });
       })
-      .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: err.response.data,
-        });
-      });
+      .catch((err) => console.log(err));
   };
 };
 
-export const unregisterUserFromCourse = (maKhoaHoc, taiKhoan) => {
-  let data = { maKhoaHoc, taiKhoan};
-  return dispatch => {
+export const unregisterUserFromCourse = (maKhoaHoc, user) => {
+  let { taiKhoan } = user;
+  let data = { taiKhoan, maKhoaHoc };
+  return (dispatch) => {
     courseService
-    .huyGhiDanh(data)
-    .then((res) => {
-      dispatch(createAction(UNREGISTER_USER, taiKhoan));
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: res.data,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    })
-    .catch((err) => {
-      Swal.fire({
-        icon: "error",
-        title: err.response.data,
-      });
-    });
-  }
-}
+      .huyGhiDanh(data)
+      .then((res) => {
+        dispatch(createAction(UN_REGISTER_USER, user))
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+};
