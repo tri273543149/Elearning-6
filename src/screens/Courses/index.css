@@ -80,7 +80,7 @@
 }
 .courses .course_item_1 img {
   width: 100%;
-  min-height: 140px;
+  height: 140px;
 }
 .courses .course_item_1 .text_box {
   padding: 10px;

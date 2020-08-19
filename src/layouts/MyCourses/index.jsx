@@ -1,5 +1,8 @@
 import React from "react";
 import "./index.css";
+import { useSelector, useDispatch } from "react-redux";
+import { unregisterCourse } from "../../store/actions/course";
+
 import img_1 from "./images/course_1.jpg";
 import img_2 from "./images/course_2.jpg";
 import img_3 from "./images/course_3.jpg";
@@ -12,69 +15,6 @@ import img_9 from "./images/course_9.jpg";
 import img_10 from "./images/course_10.jpg";
 import img_11 from "./images/course_11.jpg";
 import img_12 from "./images/course_12.jpg";
-
-const courseData = [
-  {
-    id: 1,
-    name: "The Web Developer Bootcamp",
-    desc:
-      "The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-    image: img_1,
-    author: "Colt Steele",
-    rating: "4.6",
-    ratingNumber: "179,122",
-  },
-  {
-    id: 2,
-    name: "Angular - The Complete Guide (2020 Edition)",
-    desc:
-      "Master Angular 10 and build awesome, reactive web apps with the successor of Angular.js",
-    image: img_2,
-    author: "Maximilian",
-    rating: "4.6",
-    ratingNumber: "126,592",
-  },
-  {
-    id: 3,
-    name: "The Complete JavaScript Course 2020: Build Real Projects!",
-    desc:
-      "Master JavaScript with the most complete course! Projects, challenges, quizzes, JavaScript ES6+, OOP, AJAX, Webpack",
-    image: img_3,
-    author: "Rob Percival",
-    rating: "4.6",
-    ratingNumber: "80,311",
-  },
-  {
-    id: 4,
-    name: "The Complete Web Developer Course 2.0",
-    desc:
-      "Learn Web Development by building 25 websites and mobile apps using HTML, CSS, Javascript, PHP, Python, MySQL & more!",
-    image: img_4,
-    author: "Maximilian",
-    rating: "4.6",
-    ratingNumber: "62,185",
-  },
-  {
-    id: 5,
-    name: "The Complete 2020 Web Development Bootcamp",
-    desc:
-      "Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!",
-    image: img_5,
-    author: "Angela Yu",
-    rating: "4.6",
-    ratingNumber: "78,747",
-  },
-  {
-    id: 6,
-    name: "Modern React with Redux [2020 Update]",
-    desc:
-      "Master React v16.6.3 and Redux with React Router, Webpack, and Create-React-App. Includes Hooks!",
-    image: img_6,
-    author: "Stephen Grider",
-    rating: "4.6",
-    ratingNumber: "59,323",
-  },
-];
 
 const myWishList = [
   {
@@ -133,6 +73,66 @@ const myWishList = [
     desc:
       "Master React v16.6.3 and Redux with React Router, Webpack, and Create-React-App. Includes Hooks!",
     image: img_12,
+    author: "Stephen Grider",
+    rating: "4.6",
+    ratingNumber: "59,323",
+  },
+  {
+    id: 7,
+    name: "The Web Developer Bootcamp",
+    desc:
+      "The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
+    image: img_1,
+    author: "Colt Steele",
+    rating: "4.6",
+    ratingNumber: "179,122",
+  },
+  {
+    id: 8,
+    name: "Angular - The Complete Guide (2020 Edition)",
+    desc:
+      "Master Angular 10 and build awesome, reactive web apps with the successor of Angular.js",
+    image: img_2,
+    author: "Maximilian",
+    rating: "4.6",
+    ratingNumber: "126,592",
+  },
+  {
+    id: 9,
+    name: "The Complete JavaScript Course 2020: Build Real Projects!",
+    desc:
+      "Master JavaScript with the most complete course! Projects, challenges, quizzes, JavaScript ES6+, OOP, AJAX, Webpack",
+    image: img_3,
+    author: "Rob Percival",
+    rating: "4.6",
+    ratingNumber: "80,311",
+  },
+  {
+    id: 10,
+    name: "The Complete Web Developer Course 2.0",
+    desc:
+      "Learn Web Development by building 25 websites and mobile apps using HTML, CSS, Javascript, PHP, Python, MySQL & more!",
+    image: img_4,
+    author: "Maximilian",
+    rating: "4.6",
+    ratingNumber: "62,185",
+  },
+  {
+    id: 11,
+    name: "The Complete 2020 Web Development Bootcamp",
+    desc:
+      "Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!",
+    image: img_5,
+    author: "Angela Yu",
+    rating: "4.6",
+    ratingNumber: "78,747",
+  },
+  {
+    id: 12,
+    name: "Modern React with Redux [2020 Update]",
+    desc:
+      "Master React v16.6.3 and Redux with React Router, Webpack, and Create-React-App. Includes Hooks!",
+    image: img_6,
     author: "Stephen Grider",
     rating: "4.6",
     ratingNumber: "59,323",
@@ -244,15 +244,46 @@ const myOrders = [
   },
 ];
 const MyCourses = () => {
-  const renderMyCourses = () => {
-    return courseData.map((course, key) => (
+  const dispatch = useDispatch();
+  const myCourse = useSelector((state) => state.course.myCourse);
+  const courses = useSelector((state) => state.course.courses);
+  const credentials = useSelector((state) => state.user.credentials) || {
+    taiKhoan: "",
+  };
+  let { taiKhoan } = credentials;
+  const renderMyCourse = () => {
+    let temptArray = [];
+    if (myCourse && myCourse.length > 0) {
+      for (let course of courses) {
+        for (let item of myCourse) {
+          if (course.maKhoaHoc === item.maKhoaHoc) {
+            temptArray = [...temptArray, course];
+          }
+        }
+      }
+    } else {
+      return (
+        <h4 className="font-weight-bold">
+          You don't have any course! Please go{" "}
+          <span className="text-danger">Register Course</span> to get the
+          courses!
+        </h4>
+      );
+    }
+    return temptArray.map((course, key) => (
       <div className="col-4 item_box" key={key}>
+        <button
+          className="btn btn-danger"
+          onClick={() => dispatch(unregisterCourse(taiKhoan, course.maKhoaHoc))}
+        >
+          X
+        </button>
         <div className="item">
-          <img src={course.image} alt="/" />
-          <div className="name">{course.name}</div>
-          <div className="desc">{course.desc}</div>
+          <img src={course.hinhAnh} alt="/" />
+          <div className="name">{course.tenKhoaHoc}</div>
+          <div className="desc">{course.moTa}</div>
           <div className="author">
-            {course.author}
+            {course.nguoiTao ? course.nguoiTao.hoTen : ""}
             <i className="fa fa-star ml-2"></i>
             <i className="fa fa-star"></i>
             <i className="fa fa-star"></i>
@@ -380,12 +411,7 @@ const MyCourses = () => {
                 aria-labelledby="my-courses-tab"
               >
                 <div className="container-fluid">
-                  <div className="row">
-                    {renderMyCourses()}
-                    <button className="btn_showmore">
-                      Show more <i className="fa fa-long-arrow-alt-right"></i>
-                    </button>
-                  </div>
+                  <div className="row">{renderMyCourse()}</div>
                 </div>
               </div>
               <div
@@ -395,12 +421,7 @@ const MyCourses = () => {
                 aria-labelledby="my-wishlist-tab"
               >
                 <div className="container-fluid">
-                  <div className="row">
-                    {renderMyWishlist()}{" "}
-                    <button className="btn_showmore">
-                      Show more <i className="fa fa-long-arrow-alt-right"></i>
-                    </button>
-                  </div>
+                  <div className="row">{renderMyWishlist()}</div>
                 </div>
               </div>
               <div

@@ -14,6 +14,7 @@ import {
   SET_REGISTER_COURSE,
   SET_UNREGISTER_COURSE,
 } from "../constants/user";
+import { FETCH_MY_COURSE } from "../constants/course";
 import { IS_MODAL_CLOSE } from "../constants/modal";
 
 export const login = (user) => {
@@ -40,6 +41,18 @@ export const login = (user) => {
           title: "Username or password is wrong!",
         });
       });
+  };
+};
+
+export const fetchMyCourse = (taiKhoan) => {
+  let data = { taiKhoan };
+  return (dispatch) => {
+    userService
+      .thongTinTaiKhoan(data)
+      .then((res) => {
+        dispatch(createAction(FETCH_MY_COURSE, res.data.chiTietKhoaHocGhiDanh));
+      })
+      .catch((err) => console.log(err.response.data));
   };
 };
 

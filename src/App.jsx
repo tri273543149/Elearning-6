@@ -117,7 +117,7 @@ class App extends Component {
             />
             <HomeTemplate path="/courses" exact component={Courses} />
             <HomeTemplate
-              path="/profile/:userId"
+              path="/profile/:taiKhoan"
               exact
               component={UserProfile}
             />

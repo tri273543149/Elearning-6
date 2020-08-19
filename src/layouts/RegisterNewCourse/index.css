@@ -1,0 +1,25 @@
+.register_new_course .item{
+    border: solid 1px grey;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.register_new_course img{
+    width: 100%;
+}
+.register_new_course .name{
+    font-size: 15px;
+    font-weight: bold;
+    height: 45px;
+    overflow: hidden;
+    padding: 3px 5px;
+}
+.register_new_course .desc{
+    font-size: 12px;
+    height: 42px;
+    overflow: hidden;
+    padding: 3px 5px;
+}

@@ -88,7 +88,7 @@ const CourseDetailManaging = ({ match }) => {
                 aria-controls="pills-in"
                 aria-selected="true"
               >
-                Students in this course
+                ALL STUDENT IN THIS COURSE
               </a>
             </li>
             <li className="nav-item">
@@ -101,20 +101,7 @@ const CourseDetailManaging = ({ match }) => {
                 aria-controls="pills-out"
                 aria-selected="false"
               >
-                Student Unregistered yet
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="pills-waiting-tab"
-                data-toggle="pill"
-                href="#pills-waiting"
-                role="tab"
-                aria-controls="pills-waiting"
-                aria-selected="false"
-              >
-                Waiting student list
+                STUDENTS HAVE'NT REGISTERED THIS COURSE YET
               </a>
             </li>
           </ul>
@@ -134,14 +121,6 @@ const CourseDetailManaging = ({ match }) => {
               aria-labelledby="pills-out-tab"
             >
               <UnregisteredStudent courseDetail={courseDetail} />
-            </div>
-            <div
-              className="tab-pane fade"
-              id="pills-waiting"
-              role="tabpanel"
-              aria-labelledby="pills-waiting-tab"
-            >
-              Cho
             </div>
           </div>
         </div>

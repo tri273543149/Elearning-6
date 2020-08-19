@@ -2,6 +2,8 @@ import {
   FETCH_COURSES,
   DELETE_COURSE,
   FETCH_COURSE_DETAIL,
+  ADD_MY_COURSE,
+  DELETE_MY_COURSE,
 } from "../constants/course";
 import { courseService } from "../../services";
 import { createAction } from ".";
@@ -156,3 +158,53 @@ export const unregisterUserFromCourse = (course, user) => {
       .catch((err) => console.log(err));
   };
 };
+
+export const registerNewCourse = (taiKhoan, course) => {
+  let { maKhoaHoc } = course;
+  let data = { maKhoaHoc, taiKhoan };
+  return dispatch => {
+    courseService
+      .dangKyKhoaHoc(data)
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(createAction(ADD_MY_COURSE, course))
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.response.data,
+          showConfirmButton: true,
+        });
+      });
+  }
+}
+export const unregisterCourse = (taiKhoan, maKhoaHoc) => {
+    let data = { maKhoaHoc, taiKhoan }
+    return dispatch => {
+      courseService
+      .huyGhiDanh(data)
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(createAction(DELETE_MY_COURSE, maKhoaHoc))
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.response.data,
+          showConfirmButton: true,
+        });
+      });
+    }
+}

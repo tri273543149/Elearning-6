@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/actions/user";
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import UserImage from "./usericon.png";
 import MyCourses from "../../layouts/MyCourses";
 import Footer from "../../components/Footer";
+import { fetchMyCourse } from "../../store/actions/user";
+import RegisterNewCourse from "../../layouts/RegisterNewCourse";
 
 const myCertifications = [
   { id: 1, name: "Leadership: Practical Leadership Skills" },
@@ -29,9 +31,17 @@ const myCertifications = [
   { id: 9, name: "Get personal learning recommendations" },
 ];
 
-const UserProfile = ({ history }) => {
+const UserProfile = ({ history, match }) => {
   const dispatch = useDispatch();
   const credentials = useSelector((state) => state.user.credentials) || {};
+  let { taiKhoan } = match.params;
+  const initialFetch = useCallback(() => {
+    dispatch(fetchMyCourse(taiKhoan));
+  }, [taiKhoan, dispatch]);
+
+  useEffect(() => {
+    initialFetch();
+  }, [initialFetch]);
 
   const onLogOut = () => {
     dispatch(logout());
@@ -117,6 +127,19 @@ const UserProfile = ({ history }) => {
                       aria-selected="false"
                     >
                       <i className="fa fa-cog mr-2"></i>Edit profile
+                    </a>
+                    <a
+                      className="nav-link"
+                      id="v-pills-register-tab"
+                      data-toggle="pill"
+                      href="#v-pills-register"
+                      role="tab"
+                      aria-controls="v-pills-register"
+                      aria-selected="false"
+                    >
+                      <span className="text-danger font-weight-bold">
+                        Register Course
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -267,10 +290,20 @@ const UserProfile = ({ history }) => {
                               />
                             </div>
                           </div>
-                          <button className="btn btn-danger mt-3">Submit</button>
+                          <button className="btn btn-danger mt-3">
+                            Submit
+                          </button>
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div
+                    className="tab-pane fade"
+                    id="v-pills-register"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-register-tab"
+                  >
+                    <RegisterNewCourse />
                   </div>
                 </div>
               </div>

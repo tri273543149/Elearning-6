@@ -9,6 +9,14 @@
 .my_courses .tab_content a.active{
     background: green;
 }
+.my_courses .item_box{
+    position: relative;
+}
+.my_courses .item_box button{
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
 .my_courses .item_box .item{
     box-shadow: 0 0 3px 3px #d6b9b9;
     height: 240px;

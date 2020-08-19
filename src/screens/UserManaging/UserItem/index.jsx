@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 const UserItem = ({ user, index }) => {
   const dispatch = useDispatch();
   let { taiKhoan, hoTen, email, soDt, maLoaiNguoiDung, soDT } = user;
-  console.log(user);
   const getUserInfo = () => {
     dispatch(createAction(IS_MODAL_OPEN, "UpdateUser"));
     dispatch(findUser(taiKhoan));

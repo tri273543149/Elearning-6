@@ -79,7 +79,7 @@ const UserDetailManaging = ({ match }) => {
                 aria-controls="pills-coursein"
                 aria-selected="true"
               >
-                User's Courses
+                COURSES OF THIS STUDENT
               </a>
             </li>
             <li className="nav-item">
@@ -92,20 +92,7 @@ const UserDetailManaging = ({ match }) => {
                 aria-controls="pills-courseout"
                 aria-selected="false"
               >
-                Courses Unregistering
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="pills-coursewaiting-tab"
-                data-toggle="pill"
-                href="#pills-coursewaiting"
-                role="tab"
-                aria-controls="pills-coursewaiting"
-                aria-selected="false"
-              >
-                Courses Waiting List
+                COURSES THIS STUDENT HAVE'NT REGISTERED YET
               </a>
             </li>
           </ul>
@@ -125,14 +112,6 @@ const UserDetailManaging = ({ match }) => {
               aria-labelledby="pills-courseout-tab"
             >
               <UnregisterCourses userDetail={userDetail} />
-            </div>
-            <div
-              className="tab-pane fade"
-              id="pills-coursewaiting"
-              role="tabpanel"
-              aria-labelledby="pills-coursewaiting-tab"
-            >
-              3
             </div>
           </div>
         </div>
