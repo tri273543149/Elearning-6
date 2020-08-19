@@ -3,27 +3,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { unregisterUserFromCourse } from "../../store/actions/course";
 
-const RegisteredStudent = ({ courseDetail }) => {
+const RegisterCourses = ({ userDetail }) => {
   const dispatch = useDispatch();
-  const registeredStudentList = useSelector(
-    (state) => state.register.registeredStudentList
+  const registeredCourseList = useSelector(
+    (state) => state.registerCourse.registeredCourseList
   );
-  const renderStudentItem = () => {
-    if (registeredStudentList && registeredStudentList.length > 0) {
-      return registeredStudentList.map((student, index) => (
+
+  const renderCourseItem = () => {
+    if (registeredCourseList && registeredCourseList.length > 0) {
+      return registeredCourseList.map((course, index) => (
         <tr key={index}>
           <td>{index + 1}</td>
           <td>
-            <NavLink to={`/profile/${student.taiKhoan}`}>
-              {student.taiKhoan}
+            <NavLink to={`/admin-course-detail/${course.maKhoaHoc}`}>
+              {course.maKhoaHoc}
             </NavLink>
           </td>
-          <td>{student.hoTen}</td>
+          <td>
+            <div className="item">{course.tenKhoaHoc}</div>
+          </td>
           <td>
             <button
               className="btn btn-danger"
               onClick={() =>
-                dispatch(unregisterUserFromCourse(courseDetail, student))
+                dispatch(unregisterUserFromCourse(course, userDetail))
               }
             >
               Unregister
@@ -33,22 +36,21 @@ const RegisteredStudent = ({ courseDetail }) => {
       ));
     }
   };
-
   return (
-    <div className="registered_student">
+    <div className="register_courses">
       <table className="table table-striped">
         <thead>
           <tr>
             <th>Index</th>
-            <th>Username</th>
-            <th>Fullname</th>
+            <th>Course ID</th>
+            <th>Course Name</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>{renderStudentItem()}</tbody>
+        <tbody>{renderCourseItem()}</tbody>
       </table>
     </div>
   );
 };
 
-export default RegisteredStudent;
+export default RegisterCourses;

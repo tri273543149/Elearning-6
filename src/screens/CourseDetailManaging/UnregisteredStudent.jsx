@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { registerUserToCourse } from "../../store/actions/course";
 
-const UnregisteredStudent = ({ maKhoaHoc }) => {
+const UnregisteredStudent = ({ courseDetail }) => {
   const dispatch = useDispatch();
   const unregisteredStudentList = useSelector(state => state.register.unregisteredStudentList);
   const renderStudentItem = () => {
@@ -15,7 +15,7 @@ const UnregisteredStudent = ({ maKhoaHoc }) => {
           <td>
             <button
               className="btn btn-success"
-              onClick={() => dispatch(registerUserToCourse(maKhoaHoc, student))}
+              onClick={() => dispatch(registerUserToCourse(courseDetail, student))}
             >
               Register
             </button>

@@ -7,7 +7,12 @@ import { courseService } from "../../services";
 import { createAction } from ".";
 import { IS_MODAL_CLOSE } from "../constants/modal";
 import Swal from "sweetalert2";
-import { REGISTER_USER, UN_REGISTER_USER } from "../constants/user";
+import {
+  REGISTER_USER,
+  UN_REGISTER_USER,
+  REGISTER_COURSE,
+  UN_REGISTER_COURSE,
+} from "../constants/user";
 
 export const fetchCoursesList = () => {
   return (dispatch) => {
@@ -108,14 +113,16 @@ export const deleteCourse = (maKhoaHoc) => {
   };
 };
 
-export const registerUserToCourse = (maKhoaHoc, user) => {
+export const registerUserToCourse = (course, user) => {
   let { taiKhoan } = user;
+  let { maKhoaHoc } = course;
   let data = { taiKhoan, maKhoaHoc };
   return (dispatch) => {
     courseService
       .ghiDanhKhoaHoc(data)
       .then((res) => {
         dispatch(createAction(REGISTER_USER, user));
+        dispatch(createAction(REGISTER_COURSE, course));
         Swal.fire({
           position: "center",
           icon: "success",
@@ -128,14 +135,16 @@ export const registerUserToCourse = (maKhoaHoc, user) => {
   };
 };
 
-export const unregisterUserFromCourse = (maKhoaHoc, user) => {
+export const unregisterUserFromCourse = (course, user) => {
   let { taiKhoan } = user;
+  let { maKhoaHoc } = course;
   let data = { taiKhoan, maKhoaHoc };
   return (dispatch) => {
     courseService
       .huyGhiDanh(data)
       .then((res) => {
-        dispatch(createAction(UN_REGISTER_USER, user))
+        dispatch(createAction(UN_REGISTER_USER, user));
+        dispatch(createAction(UN_REGISTER_COURSE, course));
         Swal.fire({
           position: "center",
           icon: "success",

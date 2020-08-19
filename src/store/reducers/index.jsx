@@ -7,6 +7,7 @@ import courseReducer from "./course";
 import courseDetailReducer from "./courseDetail";
 import usersReducer from "./users";
 import registerReducer from "./register";
+import registerCourseReducer from "./registerCourse";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   courseDetail: courseDetailReducer,
   users: usersReducer,
   register: registerReducer,
+  registerCourse: registerCourseReducer,
 });
 
 export default rootReducer;

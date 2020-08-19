@@ -10,9 +10,11 @@ import {
   DELETE_USER,
   SET_REGISTER_USER_LIST,
   SET_UNREGISTER_USER_LIST,
+  FETCH_USER_LIST,
+  SET_REGISTER_COURSE,
+  SET_UNREGISTER_COURSE,
 } from "../constants/user";
 import { IS_MODAL_CLOSE } from "../constants/modal";
-import { FETCH_USER_LIST } from "../constants/user";
 
 export const login = (user) => {
   return (dispatch) => {
@@ -153,13 +155,33 @@ export const getUnregiteredUserList = (maKhoaHoc) => {
   };
 };
 
-export const getRegisteredUserList = maKhoaHoc => {
-  return dispatch => {
+export const getRegisteredUserList = (maKhoaHoc) => {
+  return (dispatch) => {
     userService
-    .layDanhSachHocVienKhoaHoc(maKhoaHoc)
-    .then(res => {
-      dispatch(createAction(SET_REGISTER_USER_LIST, res.data));
-    })
-    .catch((err) => console.log(err.response.data));
-  }
-}
+      .layDanhSachHocVienKhoaHoc(maKhoaHoc)
+      .then((res) => {
+        dispatch(createAction(SET_REGISTER_USER_LIST, res.data));
+      })
+      .catch((err) => console.log(err.response.data));
+  };
+};
+export const getCoursesUserRegistered = (taiKhoan) => {
+  return (dispatch) => {
+    userService
+      .layDanhSachKhoaHocDaXetDuyet(taiKhoan)
+      .then((res) => {
+        dispatch(createAction(SET_REGISTER_COURSE, res.data));
+      })
+      .catch((err) => console.log(err));
+  };
+};
+export const getCoursesUserUnregistered = (taiKhoan) => {
+  return (dispatch) => {
+    userService
+      .layDanhSachKhoaHocChuaGhiDanh(taiKhoan)
+      .then((res) => {
+        dispatch(createAction(SET_UNREGISTER_COURSE, res.data));
+      })
+      .catch((err) => console.log(err));
+  };
+};

@@ -125,7 +125,7 @@ const CourseDetailManaging = ({ match }) => {
               role="tabpanel"
               aria-labelledby="pills-in-tab"
             >
-             <RegisteredStudent maKhoaHoc={maKhoaHoc} />
+             <RegisteredStudent courseDetail={courseDetail} />
             </div>
             <div
               className="tab-pane fade"
@@ -133,7 +133,7 @@ const CourseDetailManaging = ({ match }) => {
               role="tabpanel"
               aria-labelledby="pills-out-tab"
             >
-              <UnregisteredStudent maKhoaHoc={maKhoaHoc} />
+              <UnregisteredStudent courseDetail={courseDetail} />
             </div>
             <div
               className="tab-pane fade"

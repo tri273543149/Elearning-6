@@ -1,0 +1,15 @@
+.user_detail_managing{
+    padding-top: 40px;
+    min-height: 650px;
+}
+.user_detail_managing .content_box{
+    width: 80%;
+    margin: 0 auto;
+}
+.user_detail_managing table th,
+.user_detail_managing table td{
+    vertical-align: middle;
+}
+.user_detail_managing table{
+    text-align: center;
+}

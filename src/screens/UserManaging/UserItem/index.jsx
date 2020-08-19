@@ -5,6 +5,7 @@ import { IS_MODAL_OPEN } from "../../../store/constants/modal";
 import { findUser } from "../../../store/actions/user";
 import { deleteUser } from "../../../store/actions/user";
 import Swal from "sweetalert2";
+import { NavLink } from "react-router-dom";
 
 const UserItem = ({ user, index }) => {
   const dispatch = useDispatch();
@@ -32,7 +33,11 @@ const UserItem = ({ user, index }) => {
   return (
     <tr>
       <td>{index}</td>
-      <td>{taiKhoan}</td>
+      <td>
+        <NavLink to={`/admin-user-detail/${taiKhoan}`}>
+          <span className="font-weight-bold"> {taiKhoan}</span>
+        </NavLink>
+      </td>
       <td>{email}</td>
       <td>{soDt ? soDt : soDT}</td>
       <td>{hoTen}</td>

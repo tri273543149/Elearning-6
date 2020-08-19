@@ -27,6 +27,7 @@ import Blogs from "./screens/Blogs";
 import Events from "./screens/Events";
 import Payment from "./screens/Payments";
 import CourseDetailManaging from "./screens/CourseDetailManaging";
+import UserDetailManaging from "./screens/UserDetailManaging";
 // modal components
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
@@ -136,6 +137,11 @@ class App extends Component {
               component={CourseDetailManaging}
             />
             <AdminTemplate path="/admin-users" exact component={UserManaging} />
+            <AdminTemplate
+              path="/admin-user-detail/:taiKhoan"
+              exact
+              component={UserDetailManaging}
+            />
           </Switch>
         </Fragment>
         <Modal
