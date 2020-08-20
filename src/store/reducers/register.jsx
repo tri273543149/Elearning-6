@@ -1,8 +1,10 @@
 import {
   SET_REGISTER_USER_LIST,
   SET_UNREGISTER_USER_LIST,
+  SET_WAITING_LIST,
   REGISTER_USER,
   UN_REGISTER_USER,
+  CONFIRM_USER,
 } from "../constants/user";
 
 let initialState = {
@@ -18,6 +20,24 @@ const registerReducer = (state = initialState, actions) => {
     }
     case SET_REGISTER_USER_LIST: {
       return { ...state, registeredStudentList: actions.payload };
+    }
+    case SET_WAITING_LIST: {
+      return { ...state, waitingList: actions.payload };
+    }
+    case CONFIRM_USER: {
+      state.registeredStudentList = [
+        ...state.registeredStudentList,
+        actions.payload,
+      ];
+      let updateArray = [...state.waitingList];
+      let index = updateArray.findIndex(
+        (user) => user.taiKhoan === actions.payload.taiKhoan
+      );
+      if (index !== -1) {
+        updateArray.splice(index, 1);
+      }
+      state.waitingList = [...updateArray];
+      return { ...state };
     }
     case UN_REGISTER_USER: {
       state.unregisteredStudentList = [

@@ -3,9 +3,11 @@ import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import UnregisteredStudent from "./UnregisteredStudent";
 import RegisteredStudent from "./RegisteredStudent";
+import WaitingStudentList from "./WaitingStudentList";
 import {
   getUnregiteredUserList,
   getRegisteredUserList,
+  getUserWaitingList,
 } from "../../store/actions/user";
 
 const CourseDetailManaging = ({ match }) => {
@@ -17,6 +19,7 @@ const CourseDetailManaging = ({ match }) => {
   const intialFetch = useCallback(() => {
     dispatch(getUnregiteredUserList(maKhoaHoc));
     dispatch(getRegisteredUserList(maKhoaHoc));
+    dispatch(getUserWaitingList(maKhoaHoc));
   }, [dispatch, maKhoaHoc]);
   useEffect(() => {
     intialFetch();
@@ -104,6 +107,19 @@ const CourseDetailManaging = ({ match }) => {
                 STUDENTS HAVE'NT REGISTERED THIS COURSE YET
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                id="pills-waitingstudent-tab"
+                data-toggle="pill"
+                href="#pills-waitingstudent"
+                role="tab"
+                aria-controls="pills-waitingstudent"
+                aria-selected="false"
+              >
+                WAITING REGISTERED STUDENTS
+              </a>
+            </li>
           </ul>
           <div className="tab-content">
             <div
@@ -112,7 +128,7 @@ const CourseDetailManaging = ({ match }) => {
               role="tabpanel"
               aria-labelledby="pills-in-tab"
             >
-             <RegisteredStudent courseDetail={courseDetail} />
+              <RegisteredStudent courseDetail={courseDetail} />
             </div>
             <div
               className="tab-pane fade"
@@ -121,6 +137,14 @@ const CourseDetailManaging = ({ match }) => {
               aria-labelledby="pills-out-tab"
             >
               <UnregisteredStudent courseDetail={courseDetail} />
+            </div>
+            <div
+              className="tab-pane fade"
+              id="pills-waitingstudent"
+              role="tabpanel"
+              aria-labelledby="pills-waitingstudent-tab"
+            >
+              <WaitingStudentList courseDetail={courseDetail} />
             </div>
           </div>
         </div>

@@ -14,6 +14,8 @@ import {
   UN_REGISTER_USER,
   REGISTER_COURSE,
   UN_REGISTER_COURSE,
+  CONFIRM_COURSE,
+  CONFIRM_USER,
 } from "../constants/user";
 
 export const fetchCoursesList = () => {
@@ -136,6 +138,49 @@ export const registerUserToCourse = (course, user) => {
       .catch((err) => console.log(err));
   };
 };
+
+
+export const confirmUserToCourse = (course, user) => {
+  let { taiKhoan } = user;
+  let { maKhoaHoc } = course;
+  let data = { taiKhoan, maKhoaHoc };
+  return (dispatch) => {
+    courseService
+      .ghiDanhKhoaHoc(data)
+      .then((res) => {
+        dispatch(createAction(CONFIRM_USER, user));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const confirmUserCourse = (course, user) => {
+  let { taiKhoan } = user;
+  let { maKhoaHoc } = course;
+  let data = { taiKhoan, maKhoaHoc };
+  return (dispatch) => {
+    courseService
+      .ghiDanhKhoaHoc(data)
+      .then((res) => {
+        dispatch(createAction(CONFIRM_COURSE, course));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+}
 
 export const unregisterUserFromCourse = (course, user) => {
   let { taiKhoan } = user;

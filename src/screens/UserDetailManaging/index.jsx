@@ -5,10 +5,12 @@ import { NavLink } from "react-router-dom";
 import {
   getCoursesUserRegistered,
   getCoursesUserUnregistered,
+  getCourseWaitingList,
 } from "../../store/actions/user";
 
 import RegisterCourses from "./RegisterCourses";
 import UnregisterCourses from "./UnregisterCourses";
+import WaitingList from "./WaitingList";
 
 const UserDetailManaging = ({ match }) => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const UserDetailManaging = ({ match }) => {
   const initialFetch = useCallback(() => {
     dispatch(getCoursesUserUnregistered(taiKhoan));
     dispatch(getCoursesUserRegistered(taiKhoan));
+    dispatch(getCourseWaitingList(taiKhoan));
   }, [dispatch, taiKhoan]);
 
   useEffect(() => {
@@ -57,7 +60,7 @@ const UserDetailManaging = ({ match }) => {
             <tr>
               <td>
                 <NavLink to={`/profile/${taiKhoanNguoiDung}`}>
-                  {taiKhoanNguoiDung}
+                  <span className="font-weight-bold">{taiKhoanNguoiDung}</span>
                 </NavLink>
               </td>
               <td>{hoTen}</td>
@@ -95,6 +98,19 @@ const UserDetailManaging = ({ match }) => {
                 COURSES THIS STUDENT HAVE'NT REGISTERED YET
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                id="pills-waitingcourse-tab"
+                data-toggle="pill"
+                href="#pills-waitingcourse"
+                role="tab"
+                aria-controls="pills-waitingcourse"
+                aria-selected="false"
+              >
+                WAITING REGISTERED LIST
+              </a>
+            </li>
           </ul>
           <div className="tab-content" id="pills-tabContent">
             <div
@@ -112,6 +128,14 @@ const UserDetailManaging = ({ match }) => {
               aria-labelledby="pills-courseout-tab"
             >
               <UnregisterCourses userDetail={userDetail} />
+            </div>
+            <div
+              className="tab-pane fade"
+              id="pills-waitingcourse"
+              role="tabpanel"
+              aria-labelledby="pills-waitingcourse-tab"
+            >
+              <WaitingList userDetail={userDetail} />
             </div>
           </div>
         </div>

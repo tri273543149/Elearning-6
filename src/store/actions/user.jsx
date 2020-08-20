@@ -13,6 +13,8 @@ import {
   FETCH_USER_LIST,
   SET_REGISTER_COURSE,
   SET_UNREGISTER_COURSE,
+  SET_WAITING_LIST,
+  SET_WAITING_COURSE,
 } from "../constants/user";
 import { FETCH_MY_COURSE } from "../constants/course";
 import { IS_MODAL_CLOSE } from "../constants/modal";
@@ -61,6 +63,7 @@ export const logout = () => {
     localStorage.removeItem("credentials");
     localStorage.removeItem("accessToken");
     dispatch(createAction(FETCH_CREDENTIALS, null));
+    dispatch(createAction(FETCH_MY_COURSE, []));
   };
 };
 
@@ -178,6 +181,17 @@ export const getRegisteredUserList = (maKhoaHoc) => {
       .catch((err) => console.log(err.response.data));
   };
 };
+export const getUserWaitingList = (maKhoaHoc) => {
+  return (dispatch) => {
+    userService
+      .layDanhSachHocVienChoXetDuyet(maKhoaHoc)
+      .then((res) => {
+        dispatch(createAction(SET_WAITING_LIST, res.data));
+      })
+      .catch((err) => console.log(err.response.data));
+  };
+};
+///////////////////////////////////////////////
 export const getCoursesUserRegistered = (taiKhoan) => {
   return (dispatch) => {
     userService
@@ -198,3 +212,13 @@ export const getCoursesUserUnregistered = (taiKhoan) => {
       .catch((err) => console.log(err));
   };
 };
+export const getCourseWaitingList = taiKhoan => {
+  return dispatch => {
+    userService
+    .layDanhSachKhoaHocChoXetDuyet(taiKhoan)
+    .then(res => {
+      dispatch(createAction(SET_WAITING_COURSE, res.data))
+    })
+    .catch((err) => console.log(err));
+  }
+}
