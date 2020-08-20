@@ -99,6 +99,7 @@
 }
 .payment .bot_content .cart_content .item {
   display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 .payment .bot_content .cart_content img {

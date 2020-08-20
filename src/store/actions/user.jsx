@@ -62,6 +62,7 @@ export const logout = () => {
   return (dispatch) => {
     localStorage.removeItem("credentials");
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("cart");
     dispatch(createAction(FETCH_CREDENTIALS, null));
     dispatch(createAction(FETCH_MY_COURSE, []));
   };
