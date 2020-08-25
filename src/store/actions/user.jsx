@@ -41,7 +41,7 @@ export const login = (user) => {
         Swal.fire({
           icon: "error",
           title: "Username or password is wrong!",
-        });
+        }); 
       });
   };
 };
